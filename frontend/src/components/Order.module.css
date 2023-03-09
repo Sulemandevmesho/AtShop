@@ -1,0 +1,30 @@
+.order{
+    margin-left:20px;
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+.order_head{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.order_footer{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+.order_footer>span>p{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.order_footer>span{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}

@@ -1,0 +1,35 @@
+.order_list>li {
+    display: grid;
+    grid-template-columns: .3fr .5fr 1fr .3fr .3fr;
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.5);
+    padding-bottom: 5px;
+}
+.order_list {
+    text-align: center;
+    align-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: list-order;
+}
+.order_list > li>span{
+    font-size: 1.4rem;
+}
+.order_list>li>span>a{
+    text-decoration: none;
+    color: black;
+}
+
+.order_list>li::before {
+    display: flex;
+    align-self:center;
+    content: counter(list-order);
+    counter-increment: list-order;
+    align-items: center;
+    font-size: 1.2rem;
+    text-align: center;
+    font-family: sans-serif;
+    color: black;
+    font-weight: bold;
+    margin: 5px 0 0 10px;
+}

@@ -1,0 +1,19 @@
+//make git repo local
+$git init 
+
+//local link to remote repo 
+$ git remote add origin https://github.com/USER/REPO.git
+# Set a new remote
+$ git remote -v
+# Verify new remote
+> origin  https://github.com/USER/REPO.git (fetch)
+> origin  https://github.com/USER/REPO.git (push)
+
+//pull request 
+$git pull git-link
+
+// push
+$git add .
+$git status
+$git commit -m "message"
+$git push origen [origen]

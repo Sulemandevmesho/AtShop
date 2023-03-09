@@ -1,0 +1,21 @@
+.textFont{
+    font-family : 'Poppins',sans-serif;
+   background: url('../dist/login-bg.jpg') no-repeat;
+   background-position: center;
+   background-size: cover;
+}
+.inputFild:focus ~ .inputlabel,
+.inputFild:valid ~ .inputlabel{
+    top:-5px
+}
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+.inputlabel{
+    transform: translateY(-50%);
+    transition: .5s;
+}
+/* a:hover{
+    text-decoration: underline;
+} */

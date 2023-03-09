@@ -1,0 +1,39 @@
+import "./Navbar.css";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+const Navbar = ({click}) => {
+  const [active,setActive]=useState("home");
+  return (
+    <nav className="navbar">
+      <div className="nav_logo">
+        <h2>Awan Traders</h2>
+      </div>
+      <ul className="nav_links">
+        <li>
+          <Link to="/" onClick={()=>setActive("home")}>Home</Link>
+          <div className={active==="home"?"active-effect active":"active-effect"}></div>
+        </li>
+        <li>
+          <Link to="/order" onClick={()=>setActive("order")}>Orders</Link>
+          <div className={active==="order"?"active-effect active":"active-effect"}></div>
+        </li>
+        <li>
+          <Link to="/products"  onClick={()=>setActive("product")}>Products</Link>
+          <div className={active==="product"?"active-effect active":"active-effect"}></div>
+        </li>
+        <li>
+          <Link to="/addproduct" onClick={()=>setActive("addproduct")}>Add Product</Link>
+          <div className={active==="addproduct"?"active-effect active":"active-effect"}></div>
+        </li>
+      </ul>
+      <div className="humburger_menu" onClick={click}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

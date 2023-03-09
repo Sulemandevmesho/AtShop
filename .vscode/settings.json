@@ -1,0 +1,7 @@
+{
+    "zenMode.hideActivityBar": true,
+    "zenMode.hideTabs": true,
+    "zenMode.hideStatusBar": true,
+    "workbench.activityBar.visible": true,
+    "workbench.sideBar.location": "left"
+}

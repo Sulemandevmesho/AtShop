@@ -1,0 +1,8 @@
+.productscreen{
+    margin: 1rem auto;
+}
+.products{
+    
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
