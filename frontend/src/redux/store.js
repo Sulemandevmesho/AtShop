@@ -6,23 +6,46 @@ import {
   getProductsReducer,
   getAProductReducer,
 } from "../redux/reducers/productReducer";
-import { cartReducer } from "./reducers/cartReducer";
-import { getOrdersReducers,getOrderReducers } from "./reducers/orderReducer";
+//import { cartReducer } from "./reducers/cartReducer";
+import { loginReducer } from "./reducers/loginReducer";
+import {
+  getOrdersReducers,
+  getOrderReducers,
+  addItemReducer,
+  SelectUser,
+} from "./reducers/orderReducer";
 
 const reducer = combineReducers({
   getAllProducts: getProductsReducer,
   getAProduct: getAProductReducer,
-  cart: cartReducer,
+  cart: addItemReducer,
   getOrders: getOrdersReducers,
-  order:getOrderReducers,
+  order: getOrderReducers,
+  customer: SelectUser,
+  host: loginReducer,
 });
 const middleware = [thunk];
-const INITIAL_STATE={
-    
-    order:{
-      order:[]
-    }
-}
+const cartFromlocal = localStorage.getItem("cart")
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
+const customerFromlocal = localStorage.getItem("Customer_Detail")
+  ? JSON.parse(localStorage.getItem("Customer_Detail"))
+  : [];
+const hostFromlocal = localStorage.getItem("host")
+  ? JSON.parse(localStorage.getItem("host"))
+  : [];
+const INITIAL_STATE = {
+  order: {
+    order: [],
+  },
+  customer: { customer: customerFromlocal },
+  cart: {
+    cartItem: cartFromlocal,
+  },
+  host: {
+    host: hostFromlocal,
+  },
+};
 const store = createStore(
   reducer,
   INITIAL_STATE,

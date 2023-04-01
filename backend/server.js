@@ -5,6 +5,7 @@ const connectDB =require( "./config/DB");
 //import routes
 const productRoutes=require("./routes/productRoutes")
 const orderRoutes=require("./routes/orderRoutes")
+const userRoutes=require("./routes/userRoutes")
 const authRoutes=require("./routes/authRoutes")
 
 connectDB();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/products',productRoutes)
 app.use('/api/orders',orderRoutes)
+app.use('/api/user',userRoutes)
 app.use('/api/auth',authRoutes)
 const PORT = 5000;
 app.listen(PORT, () => console.log(`server runnig at port ${PORT}`));

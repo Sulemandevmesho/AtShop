@@ -6,6 +6,7 @@ import HomeScreen from "./Screens/HomeScreen";
 import ProductScreen from "./Screens/ProductScreen";
 import OrderScreen from "./Screens/OrderScreen";
 import AddProductScreen from "./Screens/AddProductScreen";
+import StockScreen from "./Screens/StockScreen";
 //components
 import Navbar from "./components/Navbar";
 import BackDrop from "./components/BackDrop";
@@ -24,12 +25,13 @@ const App = () => {
         click={() => setSideToggler(!sideToggler)}
       />
 
-      <main>
+      <main >
         <Routes>
           <Route exact path="/" element={<HomeScreen />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/orderdetail/:id" element={<OrderDetail />} />
-          <Route exact path="/products/:id" element={<ProductScreen />} />
+          <Route exact path="/product/:id" element={<ProductScreen />} />
+          <Route exact path="/products" element={<StockScreen />} />
           <Route exact path="/addproduct" element={<AddProductScreen />} />
           <Route exact path="/editproduct/:id" element={<AddProductScreen />} />
           <Route exact path="/order" element={<OrderScreen />} />

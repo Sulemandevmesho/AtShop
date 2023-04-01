@@ -9,6 +9,7 @@ import {
 } from "../redux/actions/productAction";
 import AddProductCss from "./AddProductScreen.module.css";
 const AddProductScreen = () => {
+const inRef=useRef(null);
   const dispatch = useDispatch();
   const [product, setProduct] = useState({
     pid:'',
@@ -39,9 +40,9 @@ const AddProductScreen = () => {
     setRole("Edit");
     // console.log(product);
   };
-
   const res = useSelector((state) => state.getAProduct);
   const { loading, product: Product, error } = res;
+ 
   useEffect(() => {
     if (id) {
       getEditProduct();
@@ -49,10 +50,8 @@ const AddProductScreen = () => {
       setRole("Add");
     }
   }, [role, dispatch]);
-  //const formref = useRef(null);
   const selectChange = (e) => {
     let { value } = e.target;
-    //console.log(value);
     setProduct((product) => {
       return {
         ...product,
@@ -102,7 +101,7 @@ const AddProductScreen = () => {
   };
   return (
     <div className={AddProductCss.addscreen}>
-      <form onSubmit={handleSubmit} id="form">
+      <form onSubmit={handleSubmit}  className={["min-h-full",AddProductCss.form].join(" ")}>
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -151,18 +150,17 @@ const AddProductScreen = () => {
         <select
           name="category"
           id="category"
-          value={role === "Edit" ? Product.category : ""}
-          onChange={selectChange}
         >
           <option>Select AC/DC</option>
-          <option value="AC">AC</option>
-          <option value="DC">DC</option>
+          <option onClick={selectChange} value="AC">AC</option>
+          <option onClick={selectChange} value="DC">DC</option>
         </select>
-        <input type="file" name="image" onChange={handleFile} />
+        <input type="file" name="image" onChange={handleFile} ref={inRef} />
         <div className={AddProductCss.btngroup}>
           <button type="submit" className={AddProductCss.btnsubmit}>
             {role}
           </button>
+          {/* <img src={Product.image} alt="f" /> */}
           <input
             type="reset"
             className={AddProductCss.btnreset}

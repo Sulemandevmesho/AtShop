@@ -1,5 +1,5 @@
 const Product = require("../models/Product");
-const mongoose=require('mongoose');
+const mongoose = require("mongoose");
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -24,7 +24,7 @@ const getProductbyId = async (req, res) => {
 const addProduct = async (req, res) => {
   try {
     let product = JSON.parse(JSON.stringify(req.body));
-    product.image='/images/'+req.file.filename;
+    product.image = "/images/" + req.file.filename;
     //console.log(product);
     await Product.insertMany(product);
     res.json({ msg: "Product added to stock" });
@@ -36,13 +36,14 @@ const addProduct = async (req, res) => {
 
 const putProduct = async (req, res) => {
   try {
-    console.log('call');
+    //console.log("call");
     let product = JSON.parse(JSON.stringify(req.body));
-
-    product.image='/images/'+req.file.filename;
-    console.log(req.file);
-    let e=await Product.findByIdAndUpdate({_id:product.id},product);
-    console.log(e);
+    if (req.file) {
+      product.image = "/images/" + req.file.filename;
+    }
+    //console.log(req.file);
+    let e = await Product.findByIdAndUpdate(product.id, product);
+    //console.log(e);
     res.json({ msg: "Product edited" });
   } catch (error) {
     console.error(error);

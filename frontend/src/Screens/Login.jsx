@@ -1,8 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import React, { useState } from "react";
+import { Link ,useNavigate} from "react-router-dom";
 import LoginCss from "./Login.module.css";
-
+import { login } from "../redux/actions/loginAction";
 const Login = () => {
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const [detail,setDetail]=useState({
+    userName:'',
+    password:''
+  });
+  const handleChange=(e)=>{
+    const {name,value}=e.target;
+    setDetail({...detail,[name]:value});
+  }
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    dispatch(login(detail));
+    navigate('/');
+    
+  }
   return (
     <section
       className={[
@@ -12,23 +29,24 @@ const Login = () => {
     >
       <div className="relative flex justify-center items-center  h-[450px] w-[450px] bg-transparent border-2 border-solid backdrop-blur-[2px] rounded-lg border-[rgba(225,225,255,.5)] form-box">
         <div className="form-value">
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <h2 className="text-3xl text-center text-white mb-8">Login</h2>
             <div className="relative m-[30px 0] w-[310px] border-b-4 border-white border-solid inputbox">
              
               <i className="fa fa-envelope absolute text-white text-xl top-5 right-2"></i>
               <input
               required={true}
-                type="email"
-                name="email"
+                type="text"
+                name="userName"
+                onChange={handleChange}
                 className={["w-full h-[50px] text-white bg-transparent border-none outline-none text-lg pt-0 pr-[35px] pb-0 pl-[5px]" ,LoginCss.inputFild].join(" ")}
                 id=""
               />
                <label
-                htmlFor="email"
+                htmlFor="userName"
                 className={["absolute top-2/4 left-1 text-white pointer-events-none",LoginCss.inputlabel].join(" ")}
               >
-                Email
+                User Name
               </label>
             </div>
 
@@ -36,6 +54,7 @@ const Login = () => {
             
               <i className="fa fa-lock absolute text-white text-xl top-5 right-2"></i>
               <input type="password" name="password" required={true}
+              onChange={handleChange}
               className={["w-full h-[50px] border-none text-white outline-none text-lg pt-0 pr-[35px] pb-0 pl-[5px] bg-transparent" ,LoginCss.inputFild,LoginCss.label].join(" ")}
               id="" />
                 <label htmlFor="password"

@@ -1,0 +1,7 @@
+.product_right *{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.347);
+    padding: .8rem;
+}
+.product_right *:nth-last-child(-n+1){
+    border-bottom: none;
+}

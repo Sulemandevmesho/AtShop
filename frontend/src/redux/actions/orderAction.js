@@ -39,3 +39,25 @@ export const getOrder = (id) => async (dispatch) => {
     });
   }
 };
+export const SelectUser=(user,userName)=>(dispatch,getState)=>{
+  dispatch({
+    type: actionTypes.SELECT_CUSTOMER,
+    payload:{
+      id:user,
+      customer:userName
+    }
+  });
+  let obj={customerId:user,cutomerName:userName};
+  localStorage.setItem("Customer_Detail",JSON.stringify(obj));
+}
+export const addItem=(id,qty)=>async(dispatch,getState)=>{
+  const {data} = await axios.get("/api/products/"+id);
+  dispatch({
+    type:actionTypes.ADD_ORDER_ITEM,
+    payload:{
+      product:data._id,
+      qty,
+    }
+  });
+  localStorage.setItem("cart",JSON.stringify(getState().cart.cartItem))
+}

@@ -12,7 +12,7 @@ const Product = ({ name, productId, description, price, image }) => {
         <p className="info_description">{description}</p>
         <p className="info_price">${price}</p>
         <div className="btn">
-          <Link to={`/products/${productId}`} className="info_btn">
+          <Link to={`/product/${productId}`} className="info_btn">
             View
           </Link>
           <Link to={`/editproduct/${productId}`} className="edit_btn">

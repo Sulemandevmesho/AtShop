@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Navbar = ({click}) => {
-  const [active,setActive]=useState("home");
+  const [active,setActive]=useState("");
   return (
     <nav className="navbar">
       <div className="nav_logo">
-        <h2>Awan Traders</h2>
+        <Link to="/" onClick={()=>setActive('')}><h2>Awan Traders</h2></Link>
       </div>
       <ul className="nav_links">
         <li>
@@ -15,7 +15,7 @@ const Navbar = ({click}) => {
           <div className={active==="home"?"active-effect active":"active-effect"}></div>
         </li>
         <li>
-          <Link to="/order" onClick={()=>setActive("order")}>Orders</Link>
+          <Link to="/order" onClick={()=>setActive("order")}>Create Order</Link>
           <div className={active==="order"?"active-effect active":"active-effect"}></div>
         </li>
         <li>

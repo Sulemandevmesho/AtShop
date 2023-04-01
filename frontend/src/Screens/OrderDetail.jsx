@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import OCSS from "./OrderDetail.module.css";
+import Loading from "../components/Loading";
 import { getOrder } from "../redux/actions/orderAction";
 import OrderItems from "../components/OrderItems";
 const OrderDetail = () => {
@@ -22,13 +23,7 @@ const OrderDetail = () => {
   return (
     <>
       {loading ? (
-        <div className="flex flex-col justify-center items-center min-h-screen">
-          <div className={["  ",OCSS.loading].join(' ')}>
-          </div>
-           
-          <h2 className={['relative flex  justify-center top-2/4'].join(' ')}>Loading</h2>
-        </div>
-       
+        <Loading />
       ) : error ? (
         <h2>{error}</h2>
       ) : (
